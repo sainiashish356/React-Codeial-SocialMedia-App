@@ -1,4 +1,4 @@
-import { LOCALSTORAGE_TOKEN_KEY } from "../utils";
+import { API_URLS,LOCALSTORAGE_TOKEN_KEY } from "../utils";
 
 const customFetch = async (url , {body , ...customConfig }) => {
          //got the token
@@ -19,7 +19,7 @@ const customFetch = async (url , {body , ...customConfig }) => {
         }
 
         const config = {
-            ...custommConfig,
+            ...customConfig,
             header: {
                 ...headers,
                 ...customConfig.headers,
@@ -30,11 +30,11 @@ const customFetch = async (url , {body , ...customConfig }) => {
             config.body = JSON.stringify(body);
         }
 
-    try{
+    try{ 
         const response = await fetch(url,config);
-        const data = await response.JSON();
+        const data = await response.json();
         
-        if (response.success){
+        if (data.success){
             return{
                 data: data.data,
                 success: true
@@ -50,6 +50,8 @@ const customFetch = async (url , {body , ...customConfig }) => {
     }
 };
 
-const getPosts = (page,limit) => {
-    return customFetch();
+export const getPosts = (page = 1 , limit = 5) => {
+    return customFetch(API_URLS.posts(page, limit), {
+        method: 'GET'
+    });
 }
