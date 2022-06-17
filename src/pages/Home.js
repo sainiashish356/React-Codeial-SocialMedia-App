@@ -1,8 +1,10 @@
 import styles from '../styles/home.module.css';
 
-const Home = () => {
+const Home = ({posts}) => {
   return (
     <div className={styles.postsList}>
+
+    {posts.map((post) => (
       <div className={styles.postWrapper}>
         <div className={styles.postHeader}>
           <div className={styles.postAvatar}>
@@ -11,11 +13,12 @@ const Home = () => {
               alt="user-pic"
             />
             <div>
-              <span className={styles.postAuthor}>Ashish Saini</span>
+              {/* <span className={styles.postAuthor}>Ashish Saini</span> */}
+              <span className={styles.postAuthor}>{post.user.name}</span>
               <span className={styles.postTime}>a minute ago</span>
             </div>
           </div>
-          <div className={styles.postContent}>Post Content</div>
+          <div className={styles.postContent}>{post.content}</div>
 
           <div className={styles.postActions}>
             <div className={styles.postLike}>
@@ -51,6 +54,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+    
+    ))}
     </div>
   );
 };
