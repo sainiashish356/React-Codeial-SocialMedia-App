@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import {getPosts} from '../api';
 import {Home} from '../pages';
 import {Loader} from './';
+import {Comments} from './';
+import {Navbar} from './';
 
 function App() {
   const[posts , setPosts] = useState([]);
@@ -28,7 +30,8 @@ function App() {
 
   return (
     <div className="App">
-    <Home posts={posts}/>
+    <Navbar />
+    <Home posts={posts} Comments={Comments}/>
     </div>
   );
 }
