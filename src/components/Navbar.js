@@ -5,6 +5,7 @@ const Navbar = () => {
             <div className={styles.nav}>
                 <div className={styles.leftNav}>
                     <a href="/">
+                        {/* <img src='https://f.hubspotusercontent30.net/hubfs/2235233/blog-import/2020/20-08-Aug/sm-icons-facebook-logo.png' alt='LOGO' height={65}/> */}
                         <img src='https://f.hubspotusercontent30.net/hubfs/2235233/blog-import/2020/20-08-Aug/sm-icons-facebook-logo.png' alt='LOGO' height={65}/>
                     </a>
                 </div>
@@ -20,10 +21,10 @@ const Navbar = () => {
                     <div className={styles.navLinks}>
                     <ul>
                         <li>
-                            <a href='/'>Log in</a>
+                            <a href='/'>Login</a>
                         </li>
                         <li>
-                            <a href='/'>Log out</a>
+                            <a href='/'>Logout</a>
                         </li>
                         <li>
                             <a href='/'>Register</a>

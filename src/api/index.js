@@ -14,6 +14,8 @@ const customFetch = async (url , {body , ...customConfig }) => {
             Accept: 'application/json'
         }
 
+        // Bearer authentication (also called token authentication) is an HTTP authentication scheme that involves security tokens called bearer tokens.
+
         if (token) {
             headers.Authorization = `Bearer ${token}`
         }
@@ -22,10 +24,11 @@ const customFetch = async (url , {body , ...customConfig }) => {
             ...customConfig,
             header: {
                 ...headers,
+                //if we have some extra config of our header so we are spreading it here
                 ...customConfig.headers,
             },
         };
-            //if there is a body in second arguement we stringify
+            //if there is a body in second arguement we stringify and we are adding our body in config b,coz it will sent into our fetch function
         if (body){
             config.body = JSON.stringify(body);
         }
@@ -36,6 +39,7 @@ const customFetch = async (url , {body , ...customConfig }) => {
         
         if (data.success){
             return{
+                //we are writing data.data because we have a common type of data JSON
                 data: data.data,
                 success: true
             }
