@@ -1,13 +1,15 @@
-import styles from '../styles/navbar.module.css'
+import styles from '../styles/navbar.module.css';
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
     return(
             <div className={styles.nav}>
                 <div className={styles.leftNav}>
-                    <a href="/">
-                        {/* <img src='https://f.hubspotusercontent30.net/hubfs/2235233/blog-import/2020/20-08-Aug/sm-icons-facebook-logo.png' alt='LOGO' height={65}/> */}
+
+                    <Link to ="/">
                         <img src='https://f.hubspotusercontent30.net/hubfs/2235233/blog-import/2020/20-08-Aug/sm-icons-facebook-logo.png' alt='LOGO' height={65}/>
-                    </a>
+                    </Link>
+                    
                 </div>
             
                 <div className={styles.rightNav}>
@@ -21,13 +23,13 @@ const Navbar = () => {
                     <div className={styles.navLinks}>
                     <ul>
                         <li>
-                            <a href='/'>Login</a>
+                            <Link to='/login'>Login</Link>
                         </li>
                         <li>
-                            <a href='/'>Logout</a>
+                            <Link to='/'>Logout</Link>
                         </li>
                         <li>
-                            <a href='/'>Register</a>
+                            <Link to='/'>Register</Link>
                         </li>
                     </ul>
                     </div>
