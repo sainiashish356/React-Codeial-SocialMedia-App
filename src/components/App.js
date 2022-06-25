@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { getPosts } from '../api';
+import { useAuth } from '../hooks';
 import { Home, Login } from '../pages';
-import { Loader } from './';
-import { Navbar } from './';
-
+import { Loader, Navbar} from './';
+ 
 const About = () => {
   return <h1>About</h1>;
 };
@@ -17,25 +17,26 @@ const Page404 = () => {
   return <h1>404..Page Not Found</h1>;
 };
 
-function App() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+ function App() {
+  // const [posts, setPosts] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  const auth = useAuth();
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await getPosts();
-      // console.log('response' , response);
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     const response = await getPosts();
+  //     // console.log('response' , response);
 
-      if (response.success) {
-        setPosts(response.data.posts);
-      }
+  //     if (response.success) {
+  //       setPosts(response.data.posts);
+  //     }
 
-      setLoading(false);
-    };
-    fetchPosts();
-  }, []);
+  //     setLoading(false);
+  //   };
+  //   fetchPosts();
+  // }, []);
 
-  if (loading) {
+  if (auth.loading) {
     return <Loader />;
   }
 
@@ -46,7 +47,8 @@ function App() {
         <Switch>
 
           <Route exact path="/">
-            <Home posts={posts} />
+            {/* <Home posts={posts} /> */}
+            <Home posts={[]} />
           </Route>
 
           <Route exact path="/login">
