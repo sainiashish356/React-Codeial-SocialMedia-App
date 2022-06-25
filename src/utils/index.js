@@ -20,7 +20,7 @@ export const getItemFromLocalStorage = (key) => {
 
 export const removeItemFromLocalStorage = (key) => {
   if(!key){
-    return console.error ('Can not get the value from Local Storage')
+    return console.error ('Can get the value from Local Storage')
   }
 
   localStorage.removeItem(key);

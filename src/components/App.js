@@ -1,16 +1,10 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { useAuth } from '../hooks';
-import { Home, Login } from '../pages';
+import { Home, Login ,Signup } from '../pages';
+// import Signup from '../pages/Signup';
 import { Loader, Navbar} from './';
  
-const About = () => {
-  return <h1>About</h1>;
-};
-
-const UserInfo = () => {
-  return <h1>User</h1>;
-};
 
 const Page404 = () => {
   return <h1>404..Page Not Found</h1>;
@@ -40,12 +34,8 @@ const Page404 = () => {
             <Login />
           </Route>
 
-          <Route exact path="/about">
-            <About />
-          </Route>
-
-          <Route exact path="/user/asd">
-            <UserInfo />
+          <Route exact path="/register">
+            <Signup />
           </Route>
 
           <Route>
