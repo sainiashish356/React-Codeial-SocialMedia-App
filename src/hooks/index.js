@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 
 import { AuthContext } from "../providers/AuthProvider";
 import {login as userLogin} from '../api';
+import { setIteminLocalStorage , LOCALSTORAGE_TOKEN_KEY, removeItemFromLocalStorage } from "../utils";
+
+
 
 export const useAuth = () => {
     return useContext(AuthContext)
@@ -16,6 +19,7 @@ const login = async (email , password) => {
 
     if(response.success){
         setUser(response.data.user)
+        setIteminLocalStorage(LOCALSTORAGE_TOKEN_KEY , response.data.token ? response.data.token : null)
         return{
             success: true,
         }
@@ -29,6 +33,7 @@ const login = async (email , password) => {
 
 const logout = () => {
     setUser(null);
+    removeItemFromLocalStorage(LOCALSTORAGE_TOKEN_KEY);
 };
 
 
