@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { getPosts } from '../api';
+
 import { useAuth } from '../hooks';
 import { Home, Login } from '../pages';
 import { Loader, Navbar} from './';
@@ -18,23 +17,9 @@ const Page404 = () => {
 };
 
  function App() {
-  // const [posts, setPosts] = useState([]);
-  // const [loading, setLoading] = useState(true);
+ 
   const auth = useAuth();
 
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     const response = await getPosts();
-  //     // console.log('response' , response);
-
-  //     if (response.success) {
-  //       setPosts(response.data.posts);
-  //     }
-
-  //     setLoading(false);
-  //   };
-  //   fetchPosts();
-  // }, []);
 
   if (auth.loading) {
     return <Loader />;
