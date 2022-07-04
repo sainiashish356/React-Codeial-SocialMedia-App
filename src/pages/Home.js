@@ -35,7 +35,7 @@ const Home = () => {
           <div className={styles.postHeader}>
             <div className={styles.postAvatar}>
               <img
-                src="https://cdn-icons.flaticon.com/png/512/2202/premium/2202112.png?token=exp=1655467517~hmac=bd0f149d2e160f8cedacb8f20242b7c7"
+                src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
                 alt="user-pic"
               />
               <div>
