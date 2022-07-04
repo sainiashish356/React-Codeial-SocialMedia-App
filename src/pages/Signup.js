@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 
 import { useAuth } from '../hooks';
@@ -13,7 +14,7 @@ const Signup = () => {
   const [signingUp, setSigningUp] = useState('');
   const { addToast } = useToasts();
   const auth = useAuth();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   //in this we are disabling the button of signup and it will show signingUp
   const handleFormSubmit = async (e) => {
@@ -47,7 +48,7 @@ const Signup = () => {
     const response = await auth.signup(name, email, password, confirmPassword);
 
     if (response.success) {
-      history.push('/login');
+      navigate("/login")
       setSigningUp(false);
 
       return addToast('User registered successfully, please login now', {

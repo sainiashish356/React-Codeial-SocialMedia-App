@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { useAuth } from '../hooks';
 import { Home, Login ,Signup } from '../pages';
@@ -10,10 +10,8 @@ const Page404 = () => {
   return <h1>404..Page Not Found</h1>;
 };
 
- function App() {
- 
+ function App() { 
   const auth = useAuth();
-
 
   if (auth.loading) {
     return <Loader />;
@@ -23,26 +21,24 @@ const Page404 = () => {
     <div className="App">
       <Router>
       <Navbar />
-        <Switch>
+        <Routes>
 
-          <Route exact path="/">
+          <Route exact path="/" element={<Home posts={[]}/>}>
             {/* <Home posts={posts} /> */}
-            <Home posts={[]} />
+            {/* <Home posts={[]} /> */}
           </Route>
 
-          <Route exact path="/login">
-            <Login />
+          <Route exact path="/login" element={<Login/>}>
           </Route>
 
-          <Route exact path="/register">
-            <Signup />
+          <Route exact path="/register" element={<Signup/>}>
           </Route>
 
-          <Route>
-            <Page404 />
+          <Route element={<Page404 />}>
+            
           </Route>
 
-        </Switch>
+        </Routes>
       </Router>
     </div>
   );
