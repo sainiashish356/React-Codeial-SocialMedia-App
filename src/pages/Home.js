@@ -1,6 +1,7 @@
 import React,{useState , useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { getPosts } from '../api';
+import {Link} from 'react-router-dom';
 
 import { Comment , Loader } from '../components';
 import styles from '../styles/home.module.css';
@@ -38,8 +39,12 @@ const Home = () => {
                 src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
                 alt="user-pic"
               />
+
               <div>
-                <span className={styles.postAuthor}>{post.user.name}</span>
+                <Link to={`/user/${post.user._id}`}
+                 className={styles.postAuthor}>
+                 {post.user.name}
+                 </Link>
                 <span className={styles.postTime}>a minute ago</span>
               </div>
             </div>

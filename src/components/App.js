@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes ,Navigate} from 'react-router-dom';
 
 import { useAuth } from '../hooks';
-import { Home, Login ,Signup ,Settings} from '../pages';
+import { Home, Login ,Signup ,Settings ,UserProfile} from '../pages';
 // import Signup from '../pages/Signup';
 import { Loader, Navbar} from './';
 
@@ -42,6 +42,13 @@ const Page404 = () => {
           <Route exact path="/settings" element={
           <PrivateRoute> 
                 <Settings/>
+          </PrivateRoute>
+          }>
+          </Route> 
+          
+          <Route exact path="/user/:userId" element={
+          <PrivateRoute> 
+                <UserProfile/>
           </PrivateRoute>
           }>
           </Route> 
