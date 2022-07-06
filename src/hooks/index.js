@@ -54,6 +54,7 @@ const updateUser = async (userId , name , password , confirmPassword) => {
 
 const login = async (email , password) => {
     const response = await userLogin(email, password);
+    console.log('respone',response)
 
     if(response.success){
         setUser(response.data.user)
