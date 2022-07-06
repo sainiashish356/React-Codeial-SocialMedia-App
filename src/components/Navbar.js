@@ -10,7 +10,7 @@ const Navbar = () => {
                 <div className={styles.leftNav}>
 
                     <Link to ="/">
-                        <img src='https://ninjasfiles.s3.amazonaws.com/0000000000003454.png' alt='LOGO' height={55} width={320}/>
+                        <img src='https://ninjasfiles.s3.amazonaws.com/0000000000003454.png' alt='LOGO' />
                     </Link>
                     
                 </div>
