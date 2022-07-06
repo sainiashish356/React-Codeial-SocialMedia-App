@@ -10,7 +10,7 @@ const Navbar = () => {
                 <div className={styles.leftNav}>
 
                     <Link to ="/">
-                        <img src='https://f.hubspotusercontent30.net/hubfs/2235233/blog-import/2020/20-08-Aug/sm-icons-facebook-logo.png' alt='LOGO' height={65}/>
+                        <img src='https://ninjasfiles.s3.amazonaws.com/0000000000003454.png' alt='LOGO' height={55} width={320}/>
                     </Link>
                     
                 </div>
