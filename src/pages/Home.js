@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { getPosts } from '../api';
 import {Link} from 'react-router-dom';
 
-import { Comment , Loader } from '../components';
+import { Comment , FriendsList, Loader } from '../components';
 import styles from '../styles/home.module.css';
+import { useAuth } from '../hooks';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const auth = useAuth();
 
 
   useEffect(() => {
@@ -30,6 +32,7 @@ const Home = () => {
     }
 
   return (
+    <div className={styles.home}>
     <div className={styles.postsList}>
       {posts.map((post) => (
         <div className={styles.postWrapper} key={`post-${post._id}`}>
@@ -84,6 +87,8 @@ const Home = () => {
           </div>
         </div>
       ))}
+    </div>
+             {auth.user && <FriendsList />} 
     </div>
   );
 };
