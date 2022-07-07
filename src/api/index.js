@@ -77,3 +77,17 @@ export const fetchUserProfile = (userId) => {
     // mode: 'cors',
   });
 };
+
+export const fetchUserFriends = () => {
+  return customFetch(API_URLS.friends, {
+    method: 'GET',
+    mode: 'cors',
+  });
+};
+
+export const addFriend = (userId) => {
+  return customFetch(API_URLS.createFriendship(userId), {
+    method: 'POST',
+  });
+};
+
