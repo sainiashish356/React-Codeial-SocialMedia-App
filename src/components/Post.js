@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 
-import { createComment } from '../api';
+import { createComment, toggleLike } from '../api';
 import { usePosts } from '../hooks';
 import styles from '../styles/home.module.css';
 import { Comment } from './';
@@ -36,12 +36,32 @@ const Post = ({ post }) => {
     }
   };
 
+  const handlePostLikeClick = async () => {
+    const response = await toggleLike(post._id, 'Post');
+
+    if (response.success) {
+      if (response.data.deleted) {
+        addToast('Like removed successfully!', {
+          appearance: 'success',
+        });
+      } else {
+        addToast('Like added successfully!', {
+          appearance: 'success',
+        });
+      }
+    } else {
+      addToast(response.message, {
+        appearance: 'error',
+      });
+    }
+  };
+
   return (
     <div className={styles.postWrapper} key={post._id}>
       <div className={styles.postHeader}>
         <div className={styles.postAvatar}>
           <img
-            src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
+            src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png"
             alt="user-pic"
           />
           <div>
@@ -63,16 +83,18 @@ const Post = ({ post }) => {
 
         <div className={styles.postActions}>
           <div className={styles.postLike}>
-            <img
-              src="https://image.flaticon.com/icons/svg/1077/1077035.svg"
-              alt="likes-icon"
-            />
+            <button onClick={handlePostLikeClick}>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/889/889140.png"
+                alt="likes-icon"
+              />
+            </button>
             <span>{post.likes.length}</span>
           </div>
 
           <div className={styles.postCommentsIcon}>
             <img
-              src="https://image.flaticon.com/icons/svg/1380/1380338.svg"
+              src="https://cdn-icons-png.flaticon.com/512/1029/1029183.png"
               alt="comments-icon"
             />
             <span>{post.comments.length}</span>

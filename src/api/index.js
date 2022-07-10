@@ -116,3 +116,22 @@ export const createComment = async (content, postId) => {
     },
   });
 };
+
+export const toggleLike = async (itemId, itemType) => {
+  return customFetch(API_URLS.toggleLike(itemId, itemType), {
+    method: 'POST',
+    mode: 'cors',
+  });
+};
+export const getLikes = async (itemId, itemType) => {
+  return customFetch(API_URLS.getLikes(itemId, itemType), {
+    method: 'POST',
+    mode: 'cors',
+  });
+};
+
+export const SearchUsers = async (searchText) => {
+  return customFetch(API_URLS.searchUsers(searchText), {
+    method: 'GET',
+  });
+};
